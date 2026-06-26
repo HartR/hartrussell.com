@@ -1,6 +1,6 @@
 {{ define "main" }}
 <div class="post-list">
-{{ $posts := where .Site.RegularPages "Type" "posts" }}
+{{ $posts := where .Site.RegularPages "Type" "blog" }}
 {{ if $posts }}
   {{ range $posts.ByDate.Reverse }}
   <article class="post-row">

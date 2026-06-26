@@ -6,7 +6,7 @@
 <section class="latest-post">
   <h2>Latest post</h2>
 
-  {{ $latest_post := first 1 (where .Site.RegularPages "Type" "posts") }}
+  {{ $latest_post := first 1 (where .Site.RegularPages "Type" "blog") }}
   {{ range $latest_post }}
     <p>
       <a href="{{ .RelPermalink }}">{{ .Title }}</a>
