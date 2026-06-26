@@ -1,0 +1,17 @@
+{{ define "main" }}
+<section class="home-intro">
+  <h2 class="about-blurb">Hi, I’m Hart. This is my only social media.</h2>
+</section>
+
+<section class="latest-post">
+  <h2>Latest post</h2>
+
+  {{ $latest_post := first 1 (where .Site.RegularPages "Type" "posts") }}
+  {{ range $latest_post }}
+    <p>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </p>
+    <p>{{ .Summary | plainify | truncate 160 }}</p>
+  {{ end }}
+</section>
+{{ end }}

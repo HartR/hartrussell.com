@@ -1,0 +1,21 @@
+baseURL = "https://hartrussell.com/"
+disableKinds = ["taxonomy", "term"]
+[languages.en]
+  locale = "en-us"
+
+title = "Hart's Blog"
+theme = []
+
+[params]
+  subtitle = "My only social media"
+  description = "A small personal site for occasional notes, photos, and resume links."
+  author = "Hart"
+  github = "HartR"
+
+[permalinks]
+  posts = "/blog/:year/:month/:day/:title/"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true # Allow raw HTML in markdown (similar to Jekyll default behavior)

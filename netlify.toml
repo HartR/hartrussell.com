@@ -1,0 +1,12 @@
+[build]
+  publish = "public"
+  command = "hugo --gc --minify"
+
+[context.production.environment]
+  HUGO_VERSION = "0.163.3"
+  HUGO_ENV = "production"
+  # Optional, let's enable extended version just in case for image processing/SASS
+  HUGO_ENABLEGITINFO = "true"
+
+[context.deploy-preview.environment]
+  HUGO_VERSION = "0.163.3"

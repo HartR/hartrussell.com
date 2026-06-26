@@ -1,0 +1,80 @@
+{{ define "main" }}
+{{ $photos := resources.Match "photos/*" }}
+{{ $image_count := 0 }}
+
+<div class="photo-grid">
+{{ range $photos }}
+  {{ if eq .ResourceType "image" }}
+    {{ $image_count = add $image_count 1 }}
+    
+    {{/* Hugo Image Processing Pipeline */}}
+    {{/* Resize to a max width of 1920 for the lightbox view, convert to webp */}}
+    {{ $lightbox_img := .Resize "1920x webp" }}
+    
+    {{/* Resize to a max width of 800 for the thumbnail grid view, convert to webp */}}
+    {{ $thumb_img := .Resize "800x webp" }}
+
+    <div class="photo-card" tabindex="0" data-src="{{ $lightbox_img.RelPermalink }}" role="button" aria-label="View photo {{ $image_count }}">
+      <img src="{{ $thumb_img.RelPermalink }}" alt="Photo {{ $image_count }}" loading="lazy">
+    </div>
+  {{ end }}
+{{ end }}
+</div>
+
+{{ if eq $image_count 0 }}
+<p class="empty-note">No photos yet. Upload image files into <code>assets/photos/</code>, commit them, and this page will display them automatically.</p>
+{{ end }}
+
+<!-- Native HTML5 Dialog Lightbox -->
+<dialog class="lightbox-dialog" id="lightbox">
+  <div class="lightbox-content-wrapper">
+    <button class="lightbox-close-btn" aria-label="Close lightbox" type="button">&times;</button>
+    <img id="lightbox-img" src="" alt="High resolution view">
+  </div>
+</dialog>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const dialog = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = dialog.querySelector('.lightbox-close-btn');
+    const cards = document.querySelectorAll('.photo-card');
+
+    const openLightbox = (card) => {
+      const src = card.getAttribute('data-src');
+      lightboxImg.src = src;
+      dialog.showModal();
+    };
+
+    cards.forEach(card => {
+      // Open on click
+      card.addEventListener('click', () => openLightbox(card));
+      
+      // Open on Enter/Space keyboard trigger
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(card);
+        }
+      });
+    });
+
+    // Close on button click
+    closeBtn.addEventListener('click', () => {
+      dialog.close();
+    });
+
+    // Close on backdrop click (clicking the blurred background outside the card)
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) {
+        dialog.close();
+      }
+    });
+
+    // Clear image source on close for visual cleanup
+    dialog.addEventListener('close', () => {
+      lightboxImg.src = '';
+    });
+  });
+</script>
+{{ end }}

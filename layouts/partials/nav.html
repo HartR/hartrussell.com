@@ -1,0 +1,13 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a class="site-logo" href="{{ "/" | relURL }}">
+      <span class="logo-dot"></span>{{ .Site.Title }}
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="{{ "/" | relURL }}" class="nav-link{{ if .IsHome }} active{{ end }}">Home</a>
+      <a href="{{ "/blog/" | relURL }}" class="nav-link{{ if in .RelPermalink "/blog/" }} active{{ end }}">Blog</a>
+      <a href="{{ "/photo-album/" | relURL }}" class="nav-link{{ if in .RelPermalink "/photo-album/" }} active{{ end }}">Photos</a>
+      <a href="{{ "assets/cv.pdf" | relURL }}" class="nav-link cv-link" target="_blank">CV</a>
+    </nav>
+  </div>
+</header>

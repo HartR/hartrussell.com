@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Locale | default "en" }}">
+  {{ partial "head.html" . }}
+  <body>
+    <!-- Background p5.js canvas container -->
+    <div id="canvas-container"></div>
+    
+    <div class="site-wrap">
+      {{ partial "nav.html" . }}
+      <main class="content" id="main">
+        {{ block "main" . }}{{ end }}
+      </main>
+      {{ partial "footer.html" . }}
+    </div>
+    
+    <!-- Background animation script -->
+    <script src="{{ "assets/js/bg-animation.js" | relURL }}"></script>
+  </body>
+</html>
