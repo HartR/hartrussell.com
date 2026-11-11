@@ -1,6 +1,10 @@
 [build]
   publish = "public"
   command = "hugo --gc --minify"
+  # Exit 0 = skip the build, non-zero = build. Skip pushes that only touch the CV
+  # source or the workflow that renders it: .github/workflows/render-cv.yml compiles
+  # resume.tex, commits static/assets/cv.pdf, and that commit is what gets deployed.
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- . ':(exclude)resume.tex' ':(exclude).github'"
 
 [context.production.environment]
   HUGO_VERSION = "0.163.3"

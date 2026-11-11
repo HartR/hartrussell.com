@@ -1,0 +1,45 @@
+name: Render CV PDF
+
+# resume.tex is the source of truth; static/assets/cv.pdf is the build product.
+# Netlify ignores pushes that only touch resume.tex (see the `ignore` command in
+# netlify.toml), so the deploy that publishes the new PDF is the commit this
+# workflow makes, which already contains the rendered file.
+
+on:
+  push:
+    branches: [main]
+    paths: ["resume.tex"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: render-cv
+  cancel-in-progress: true
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume.tex
+
+      - name: Install PDF
+        run: |
+          set -euo pipefail
+          test -f resume.pdf
+          cp resume.pdf static/assets/cv.pdf
+          ls -l static/assets/cv.pdf
+
+      - name: Commit rendered PDF
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Render CV PDF from resume.tex"
+          file_pattern: static/assets/cv.pdf
+          commit_author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
