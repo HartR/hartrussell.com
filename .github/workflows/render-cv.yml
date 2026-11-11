@@ -4,6 +4,10 @@ name: Render CV PDF
 # Netlify ignores pushes that only touch resume.tex (see the `ignore` command in
 # netlify.toml), so the deploy that publishes the new PDF is the commit this
 # workflow makes, which already contains the rendered file.
+#
+# static/assets/cv.pdf is tracked by Git LFS, so the LFS objects must be pushed
+# before the commit lands — otherwise the commit reaches Netlify with a pointer
+# and the site serves a 131-byte text file as the CV.
 
 on:
   push:
@@ -24,6 +28,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          lfs: true
 
       - name: Compile LaTeX
         uses: xu-cheng/latex-action@v3
@@ -38,8 +44,16 @@ jobs:
           ls -l static/assets/cv.pdf
 
       - name: Commit rendered PDF
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Render CV PDF from resume.tex"
-          file_pattern: static/assets/cv.pdf
-          commit_author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+        run: |
+          set -euo pipefail
+          git lfs install --local
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add static/assets/cv.pdf
+          if git diff --cached --quiet; then
+            echo "rendered PDF is unchanged; nothing to commit"
+            exit 0
+          fi
+          git commit -m "Render CV PDF from resume.tex"
+          git lfs push --all origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:refs/heads/${GITHUB_REF_NAME}"

@@ -7,6 +7,8 @@ Hugo site built by Netlify on every push to `main`.
 - Photos: drop image files into `assets/photos/`; `layouts/photo-album/single.html`
   resizes each one to webp and builds the grid automatically
 - Build settings: `netlify.toml` (Hugo 0.163.3, publish `public/`)
+- Large binaries (images and PDFs) are tracked by **Git LFS** — run
+  `git lfs install` once after cloning, or you will commit pointers instead of files
 
 ## CV
 
