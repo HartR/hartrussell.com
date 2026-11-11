@@ -1,0 +1,188 @@
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[margin=0.55in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+
+\definecolor{accent}{HTML}{0B3D91}
+\definecolor{textgray}{HTML}{333333}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\tabcolsep}{0pt}
+\renewcommand{\familydefault}{\sfdefault}
+
+\titleformat{\section}
+  {\large\bfseries\color{accent}}
+  {}
+  {0em}
+  {}
+  [\titlerule]
+
+\titlespacing{\section}{0pt}{8pt}{5pt}
+
+\setlist[itemize]{
+  leftmargin=1.2em,
+  itemsep=2pt,
+  topsep=2pt,
+  parsep=0pt
+}
+
+\newcommand{\resumeHeader}[5]{
+  {\Huge \textbf{#1}} \\[3pt]
+  {\large \color{accent} #2} \\[7pt]
+  \small
+  \faMapMarker* \ #3 \quad
+  \faPhone \ #4 \quad
+  \faEnvelope \ \href{mailto:#5}{#5}
+}
+
+\newcommand{\resumeLinks}[2]{
+  \small
+  \faLinkedin \ \href{#1}{linkedin.com/in/hartcranerussell}
+  \quad
+  \faGlobe \ \href{#2}{hartrussell.com}
+}
+
+\newcommand{\job}[4]{
+  \textbf{#1} \hfill \textbf{#2} \\
+  \textit{#3} \hfill \textit{#4}
+}
+
+\begin{document}
+\color{textgray}
+
+\resumeHeader
+  {Hart Russell}
+  {Senior Software Engineer \;|\; M.S. Computer Science}
+  {San Diego, CA}
+  {760-216-1183}
+  {recruiters@hartrussell.com}
+
+\vspace{3pt}
+\resumeLinks
+  {https://www.linkedin.com/in/hartcranerussell}
+  {https://hartrussell.com/}
+
+\vspace{7pt}
+
+\section*{Professional Summary}
+Senior Software Engineer with 10+ years of experience building mission-focused defense, naval, mobile, backend, and distributed software systems. Strong background in Java, C++, Python, CI/CD, containerized development, Agile/Scrum execution, and defense program delivery across ADNS, SSDS, GPNTS, and related naval systems. Trusted technical contributor retained through contract transitions as key personnel, with demonstrated ability to translate customer requirements into reliable, maintainable, production-ready software.
+
+\section*{Core Skills}
+\begin{tabularx}{\textwidth}{@{} l X @{}}
+\textbf{Languages} & Java, C++, Python, C\#, F\#, Tcl, Scheme \\
+\textbf{Frameworks / Platforms} & Spring Boot, Java Swing, Xamarin, MvvmCross, DDS, Appium, NUnit, Google Test \\
+\textbf{DevOps / Tooling} & Git, GitLab, Bitbucket, Jenkins, CI/CD, Docker, Podman, Jira, Vagrant \\
+\textbf{Domains} & Naval defense systems, distributed systems, mission software, HMI/GUI, mobile apps, embedded/telephony software \\
+\textbf{Leadership} & Scrum Master, sprint planning, backlog refinement, task breakdown, recruiting, process improvement \\
+\end{tabularx}
+
+\section*{Professional Experience}
+
+\job
+  {Trabus Technologies}
+  {Mar 2024 -- Present}
+  {Senior Software Engineer \& Scrum Master}
+  {San Diego, CA}
+
+\begin{itemize}
+  \item Lead sprint planning, backlog refinement, and engineering task breakdown in Jira, translating customer requirements into actionable development work.
+  \item Serve as Scrum Master by facilitating Agile ceremonies, tracking progress, removing blockers, and improving delivery predictability across development cycles.
+  \item Design, develop, and maintain ADNS OSS software using Java, Spring Boot, Python, and Podman, emphasizing reliability, maintainability, and mission alignment.
+  \item Support modern software delivery using GitLab, Jenkins, and CI/CD pipelines for streamlined builds, testing, integration, and deployment.
+  \item Retained through contract transition from Frontier Technology after being identified as key personnel during recompete, preserving program knowledge and mission continuity.
+\end{itemize}
+
+\job
+  {Frontier Technology}
+  {Jun 2022 -- Mar 2024}
+  {Senior Software Engineer}
+  {San Diego, CA}
+
+\begin{itemize}
+  \item Designed, developed, and maintained ADNS OSS software using Java for mission-focused naval software environments.
+  \item Built reliable and maintainable software components while supporting program integration and delivery objectives.
+  \item Used Git, Bitbucket, Jenkins, and CI/CD pipelines to improve software build, test, integration, and deployment workflows.
+  \item Provided continuity of technical expertise and program knowledge through a successful contract transition.
+\end{itemize}
+
+\job
+  {ASRC Federal}
+  {Apr 2020 -- Jun 2022}
+  {Senior Principal Software Engineer}
+  {San Diego County, CA}
+
+\begin{itemize}
+  \item Supported Lockheed Martin's SSDS program, contributing to operator-facing GUI development and backend software functionality.
+  \item Designed, implemented, and maintained mission-focused software components using Java and C++ across user interface workflows, system logic, and integration capabilities.
+  \item Worked with Docker, Jenkins, DDS, Jira, Git, Bitbucket, and Python to support automation, configuration management, and continuous integration.
+  \item Converted from contractor to full-time employee based on strong performance, technical contribution, and team fit.
+\end{itemize}
+
+\job
+  {KAB Laboratories, Inc.}
+  {Nov 2016 -- Apr 2020}
+  {Software Engineer}
+  {San Diego County, CA}
+
+\begin{itemize}
+  \item Supported Raytheon defense programs, contributing to mission-critical naval software across GPNTS and SSDS.
+  \item Developed C++ software for GPS, precision timing, and distributed system challenges in naval shipboard environments.
+  \item Supported development, testing, and integration workflows using Python, Jenkins, Google Test, C\#, and DDS.
+  \item Developed and refactored operator-facing SSDS HMI screens for multiple naval ship configurations using Java Swing, Tcl, and C++.
+  \item Helped KAB achieve CMMI Level 3 certification through standards compliance reviews and process improvement initiatives.
+  \item Served as lead interviewer for SSDS recruiting, helping evaluate and grow the engineering team.
+\end{itemize}
+
+\job
+  {Seamgen}
+  {May 2016 -- Nov 2016}
+  {Xamarin Software Engineer}
+  {San Diego, CA}
+
+\begin{itemize}
+  \item Developed Xamarin Android applications using C\#, Xamarin Studio, and MvvmCross across consumer and utility-focused mobile apps.
+  \item Served as sole developer for a receipt-scanning application and co-developed a social image-sharing and messaging app.
+\end{itemize}
+
+\job
+  {Digium}
+  {Aug 2014 -- Mar 2016}
+  {Software Engineer}
+  {San Diego County, CA}
+
+\begin{itemize}
+  \item Developed Android, iOS, backend integration, automated testing, and desk phone software for the Switchvox communications platform.
+  \item Built mobile features from UX specifications using C\#, F\#, and Xamarin Studio, translating product requirements into reliable user-facing functionality.
+  \item Integrated mobile clients with event-driven F\# backend services for real-time communication workflows.
+  \item Designed and maintained automated mobile testing using NUnit, Appium, Jenkins, and Vagrant.
+  \item Maintained C++ desk phone software and created a C++ WebSocket client for streaming events from a real-time API.
+\end{itemize}
+
+\section*{Education}
+
+\textbf{San Diego State University} \hfill \textbf{May 2026} \\
+M.S., Computer Science
+
+\vspace{3pt}
+Completed a Master's degree in Computer Science at San Diego State University, graduating Summa Cum Laude while balancing rigorous night classes with a full-time career in software engineering.
+
+\vspace{3pt}
+Successfully passed comprehensive graduate examinations, demonstrating advanced mastery of core computer science principles, systems, algorithms, and software engineering concepts.
+
+\vspace{6pt}
+
+\textbf{Grinnell College} \hfill \textbf{2014} \\
+B.A., Computer Science
+
+\section*{Certifications}
+
+CompTIA Security+ \\
+CompTIA Linux+ Powered by LPI
+
+\end{document}
