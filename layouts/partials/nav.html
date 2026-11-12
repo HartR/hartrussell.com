@@ -11,7 +11,37 @@
       <a href="{{ "/" | relURL }}" class="nav-link{{ if .IsHome }} active{{ end }}">Home</a>
       <a href="{{ "/blog/" | relURL }}" class="nav-link{{ if in .RelPermalink "/blog/" }} active{{ end }}">Blog</a>
       <a href="{{ "/photo-album/" | relURL }}" class="nav-link{{ if in .RelPermalink "/photo-album/" }} active{{ end }}">Photos</a>
+      <details class="nav-dropdown">
+        <summary class="nav-link nav-dropdown-toggle">Projects</summary>
+        <div class="nav-dropdown-menu">
+          <a class="nav-dropdown-item" href="https://alanrussell.net" target="_blank" rel="noopener">Dad's Website</a>
+        </div>
+      </details>
       <a href="{{ "assets/cv.pdf" | relURL }}" class="nav-link cv-link" target="_blank">CV</a>
     </nav>
   </div>
 </header>
+<script>
+  (function () {
+    var dd = document.querySelector('.nav-dropdown');
+    if (!dd) return;
+    var summary = dd.querySelector('summary');
+    // Own the toggle so hover-open (mouse) and tap/keyboard (click) never fight.
+    summary.addEventListener('click', function (e) {
+      e.preventDefault();
+      dd.open = !dd.open;
+    });
+    dd.addEventListener('pointerenter', function (e) {
+      if (e.pointerType === 'mouse' || e.pointerType === undefined) dd.open = true;
+    });
+    dd.addEventListener('pointerleave', function (e) {
+      if (e.pointerType === 'mouse' || e.pointerType === undefined) dd.open = false;
+    });
+    document.addEventListener('click', function (e) {
+      if (!dd.contains(e.target)) dd.open = false;
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && dd.open) { dd.open = false; summary.focus(); }
+    });
+  })();
+</script>
