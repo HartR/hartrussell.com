@@ -17,6 +17,13 @@ It also means taking responsibility for the security of the system. These servic
 
 My lab doesn't sit on one flat network with every other device in the house. I've separated servers, storage, IoT devices, and guests into different network segments, with firewall rules controlling the connections between them. Guests get internet access without access to the local networks. Administrative access is restricted to the networks that need it.
 
+<figure>
+  <a href="/assets/images/vlans-public.webp" aria-label="Open the redacted VLAN map at full size">
+    <img src="/assets/images/vlans-public.webp" alt="Redacted VLAN map showing a firewall connecting separate trusted, server, storage, IoT, and guest networks, with a remote-access VPN and container networks shown separately." width="3724" height="3540" loading="lazy" decoding="async">
+  </a>
+  <figcaption>A redacted copy of my VLAN map. Addresses, VLAN IDs, Wi-Fi names, hostnames, ports, and detailed firewall rules are omitted. Lines show network connections, not unrestricted access. <a href="/assets/images/vlans-public.webp">Open full size</a>.</figcaption>
+</figure>
+
 I've also worked on the host firewalls and the rules around container traffic. One detail worth learning early: Docker can publish a port through a packet path that bypasses the host firewall's usual incoming rules. A reassuring firewall status isn't enough. I've added explicit filtering for published container ports and tested allowed and blocked traffic through the actual forwarding path.
 
 That kind of test is satisfying in its own right. I want evidence that a boundary works, not just a configuration file that looks reasonable.

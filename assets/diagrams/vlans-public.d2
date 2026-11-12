@@ -1,0 +1,53 @@
+# Public derivative of the private homelab VLAN map, reviewed 2026-11-11.
+# Only generalized roles are retained. Never copy private source into this repo.
+# Addresses, VLAN IDs, SSIDs, hostnames, device identifiers, ports, and exact
+# firewall rules are removed from the source itself, not covered with shapes.
+# Render: d2 --layout=dagre --theme=200 --pad=32 --scale=2 assets/diagrams/vlans-public.d2 "$TMPDIR/vlans-public.png"
+# Convert that PNG to lossless WebP; publish static/assets/images/vlans-public.webp.
+
+direction: right
+
+title: |md
+  # Network separation
+  Redacted homelab VLAN map · November 2026
+|
+
+classes: {
+  segment: {
+    style.fill: "#172337"
+    style.stroke: "#34d399"
+    style.font-color: "#f1f5f9"
+    style.border-radius: 12
+  }
+  eth: { style.stroke: "#34d399" }
+  logical: {
+    style.stroke: "#a78bfa"
+    style.stroke-dash: 4
+  }
+}
+
+fw: "Firewall / gateway\nRoutes between network segments" {
+  shape: hexagon
+}
+
+trusted: "Trusted network\nPersonal devices + administration" { class: segment }
+servers: "Server VLAN\nSelf-hosted applications" { class: segment }
+storage: "Storage VLAN\nNAS + storage services" { class: segment }
+iot: "IoT VLAN\nHome automation + smart devices" { class: segment }
+guest: "Guest VLAN\nInternet only; no local access" { class: segment }
+vpn: "Remote-access VPN\nSeparate logical network, not a VLAN" {
+  style.stroke: "#a78bfa"
+  style.stroke-dash: 4
+}
+containers: "Container networks\nOn the server; not physical VLANs" {
+  style.stroke: "#a78bfa"
+  style.stroke-dash: 4
+}
+
+fw -> trusted: { class: eth }
+fw -> servers: { class: eth }
+fw -> storage: { class: eth }
+fw -> iot: { class: eth }
+fw -> guest: { class: eth }
+fw -> vpn: { class: logical }
+containers -> servers: "runs on" { class: logical }

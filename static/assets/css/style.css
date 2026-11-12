@@ -357,6 +357,19 @@ main {
   box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
+.prose figure {
+  margin: 1.5rem 0 2rem;
+}
+.prose figure img {
+  display: block;
+  margin: 0 0 0.75rem;
+}
+.prose figcaption {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
 /* Photo Grid (Masonry look with CSS Grid) */
 .photo-grid {
   display: grid;
