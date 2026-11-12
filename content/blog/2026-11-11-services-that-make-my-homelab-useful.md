@@ -120,9 +120,9 @@ Here's a redacted overview of where these services run. Background workers, data
 
 <figure>
   <a href="/assets/images/services-public.webp" aria-label="Open the redacted services map at full size">
-    <img src="/assets/images/services-public.webp" alt="Redacted services map grouping applications on an application server, a NAS and storage host, and a separate Home Assistant device." width="2980" height="6036" loading="lazy" decoding="async">
+    <img src="/assets/images/services-public.webp" alt="Redacted services map with a Cloudflare cloud pointing to the Cloudflared connectors on the application server, NAS and storage host, and separate Home Assistant device." width="3744" height="7052" loading="lazy" decoding="async">
   </a>
-  <figcaption>Public version of my services map. Addresses, hostnames, ports, versions, and internal connection and access details are omitted. <a href="/assets/images/services-public.webp">Open full size</a>.</figcaption>
+  <figcaption>Public version of my services map. Dashed arrows show the independent Cloudflare tunnel connections. Addresses, hostnames, ports, versions, internal routes, and access-policy details are omitted. <a href="/assets/images/services-public.webp">Open full size</a>.</figcaption>
 </figure>
 
 I enjoy the technical work, but I want the result to earn its place in my life. A useful lab lets me find a photo, pick up a book, or capture a task with less friction. I'm happy to keep experimenting as long as the services give me something worth maintaining.

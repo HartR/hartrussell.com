@@ -1,17 +1,11 @@
 # Public derivative of the private services map, observed 2026-11-11.
 # Generalized service roles only; never copy private source into this repo.
-# Removed addresses, hostnames, VLAN IDs, ports, versions, device/account IDs,
-# filesystem paths, tunnel identifiers, per-service access rules, and retired apps.
-# Editorial scope matches the article; internal connection details are omitted.
-# Render: d2 --layout=dagre --theme=200 --pad=32 --scale=2
+# Addresses, hostnames, VLAN IDs, ports, versions, account identifiers,
+# filesystem paths, tunnel identifiers, and per-service access rules are omitted.
+# Only generalized Cloudflare-to-connector relationships are shown.
+# Render: d2 --layout=tala --theme=200 --pad=32 --scale=2
 
-direction: down
-grid-columns: 1
-
-title: |md
-  # Services at a glance
-  Redacted overview · grouped by host · November 2026
-|
+direction: right
 
 classes: {
   host: {
@@ -25,34 +19,61 @@ classes: {
     style.font-color: "#f1f5f9"
     style.border-radius: 8
   }
+  tunnel: {
+    style.stroke: "#a78bfa"
+    style.stroke-dash: 5
+    style.stroke-width: 3
+  }
 }
 
-server: "Application server" {
-  class: host
-  grid-columns: 2
-  native: "Hermes Agent\nNative service" { class: app }
-  photos: "Immich\nPhoto library + ML worker\nPostgreSQL + Valkey" { class: app }
-  media: "Plex + Wizarr\nMedia playback + invitations" { class: app }
-  documents: "Paperless-ngx\nDocument archive\nPostgreSQL + Valkey" { class: app }
-  reading: "Redlib\nReddit reading" { class: app }
-  connector: "Cloudflared\nCloudflare tunnel connector" { class: app }
+cloudflare: "Cloudflare\nRemote-access tunnels" {
+  shape: cloud
+  style.fill: "#282342"
+  style.stroke: "#c4b5fd"
+  style.font-color: "#f1f5f9"
 }
 
-nas: "NAS / storage host" {
-  class: host
-  grid-columns: 2
-  books: "Reading + listening\nCalibre-Web · Komga\nAudiobookshelf" { class: app }
-  organization: "Personal organization\nVikunja · Grocy\nActual Budget · Trilium" { class: app }
-  identity: "Pocket ID\nPasskey identity" { class: app }
-  dashboard: "Homepage\nRead-only Docker socket proxy" { class: app }
-  viewing: "iSponsorBlockTV\nTV viewing helper" { class: app }
-  connector: "Cloudflared\nCloudflare tunnel connector" { class: app }
-  storage: "Shared file storage\nMedia + photo originals" { class: app }
+overview: "" {
+  grid-columns: 1
+  style.fill: transparent
+  style.stroke: transparent
+
+  title: |md
+    # Services at a glance
+    Redacted overview · grouped by host · November 2026
+  |
+
+  server: "Application server" {
+    class: host
+    grid-columns: 2
+    connector: "Cloudflared\nCloudflare tunnel connector" { class: app }
+    native: "Hermes Agent\nNative service" { class: app }
+    photos: "Immich\nPhoto library + ML worker\nPostgreSQL + Valkey" { class: app }
+    media: "Plex + Wizarr\nMedia playback + invitations" { class: app }
+    documents: "Paperless-ngx\nDocument archive\nPostgreSQL + Valkey" { class: app }
+    reading: "Redlib\nReddit reading" { class: app }
+  }
+
+  nas: "NAS / storage host" {
+    class: host
+    grid-columns: 2
+    connector: "Cloudflared\nCloudflare tunnel connector" { class: app }
+    books: "Reading + listening\nCalibre-Web · Komga\nAudiobookshelf" { class: app }
+    organization: "Personal organization\nVikunja · Grocy\nActual Budget · Trilium" { class: app }
+    identity: "Pocket ID\nPasskey identity" { class: app }
+    dashboard: "Homepage\nRead-only Docker socket proxy" { class: app }
+    viewing: "iSponsorBlockTV\nTV viewing helper" { class: app }
+    storage: "Shared file storage\nMedia + photo originals" { class: app }
+  }
+
+  home: "Dedicated home-automation device" {
+    class: host
+    grid-columns: 2
+    connector: "Cloudflared\nIndependent tunnel connector" { class: app }
+    app: "Home Assistant\nDevice controls + automations" { class: app }
+  }
 }
 
-home: "Dedicated home-automation device" {
-  class: host
-  grid-columns: 2
-  app: "Home Assistant\nDevice controls + automations" { class: app }
-  connector: "Cloudflared\nIndependent tunnel connector" { class: app }
-}
+cloudflare -> overview.server.connector: { class: tunnel }
+cloudflare -> overview.nas.connector: { class: tunnel }
+cloudflare -> overview.home.connector: { class: tunnel }
