@@ -1,0 +1,14 @@
+{
+  "name": "Hart Russell",
+  "short_name": "Hart Russell",
+  "description": "Personal site: homelab projects, self-hosted services, photos, and a CV.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#07090e",
+  "theme_color": "#07090e",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
