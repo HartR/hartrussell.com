@@ -3,10 +3,12 @@ disableKinds = ["taxonomy", "term"]
 [languages.en]
   locale = "en-us"
 
-title = "Hart's Blog"
+title = "Hart Russell | M.S. Computer Science | Chill Dude"
 theme = []
 
 [params]
+  brand_name = "Hart Russell"
+  brand_tagline = "M.S. Computer Science | Chill Dude"
   subtitle = "My only social media"
   description = "A small personal site for occasional notes, photos, and resume links."
   author = "Hart"

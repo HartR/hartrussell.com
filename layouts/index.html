@@ -3,15 +3,22 @@
   <h2 class="about-blurb">Hi, I’m Hart. This is my only social media.</h2>
 </section>
 
-<section class="latest-post">
-  <h2>Latest post</h2>
-
-  {{ $latest_post := first 1 (where .Site.RegularPages "Type" "blog") }}
-  {{ range $latest_post }}
-    <p>
-      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-    </p>
-    <p>{{ .Summary | plainify | truncate 160 }}</p>
-  {{ end }}
+<section class="recent-posts" aria-labelledby="recent-posts-title">
+  <div class="recent-posts-header">
+    <h2 id="recent-posts-title">Recent posts</h2>
+    <a href="{{ "/blog/" | relURL }}">All posts →</a>
+  </div>
+  <div class="recent-posts-list">
+    {{ $posts := where .Site.RegularPages "Type" "blog" }}
+    {{ range first 3 $posts.ByDate.Reverse }}
+      <article class="latest-post">
+        <p class="post-meta"><time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "January 2, 2006" }}</time></p>
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <p>{{ if .Description }}{{ .Description }}{{ else }}{{ .Summary | plainify | truncate 180 }}{{ end }}</p>
+      </article>
+    {{ else }}
+      <p>No posts yet.</p>
+    {{ end }}
+  </div>
 </section>
 {{ end }}

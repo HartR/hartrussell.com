@@ -17,7 +17,7 @@
   --accent-gradient: linear-gradient(135deg, #00f2fe 0%, #8b5cf6 100%);
   
   --max-width: 780px;
-  --header-height: 70px;
+  --header-height: 84px;
 }
 
 /* Base resets & scrollbar */
@@ -126,6 +126,20 @@ a:hover {
   align-items: center;
   gap: 0.5rem;
 }
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  line-height: 1.3;
+}
+.brand-name {
+  font-size: 1.25rem;
+}
+.brand-tagline {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 400;
+}
 .site-logo:hover {
   text-shadow: 0 0 10px rgba(0, 242, 254, 0.6);
 }
@@ -133,6 +147,7 @@ a:hover {
 .logo-dot {
   width: 8px;
   height: 8px;
+  flex-shrink: 0;
   border-radius: 50%;
   background: var(--accent-gradient);
   display: inline-block;
@@ -217,7 +232,30 @@ main {
   margin-bottom: 0;
 }
 
-/* Latest Post Panel */
+/* Recent posts */
+.recent-posts-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.recent-posts-header h2 {
+  margin-bottom: 0;
+  color: var(--accent-cyan);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.recent-posts-header > a {
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+.recent-posts-list {
+  display: grid;
+  gap: 1.25rem;
+}
+/* Recent post cards */
 .latest-post {
   padding: 2rem;
   border-radius: 16px;
@@ -243,14 +281,6 @@ main {
   width: 4px;
   background: var(--accent-gradient);
 }
-.latest-post h2 {
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--accent-cyan);
-  margin-bottom: 0.75rem;
-}
 .latest-post h3 {
   font-size: 1.4rem;
   margin-bottom: 0.5rem;
@@ -259,6 +289,13 @@ main {
   color: var(--text-muted);
   font-size: 0.95rem;
   margin-top: 0.5rem;
+}
+
+.latest-post .post-meta {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 0.75rem;
+  color: #c4b5fd;
 }
 
 /* General Page Layout */
@@ -551,7 +588,7 @@ main {
 /* Responsive adjustments */
 @media (max-width: 600px) {
   :root {
-    --header-height: 80px;
+    --header-height: 112px;
   }
   .header-inner {
     flex-direction: column;
