@@ -14,3 +14,10 @@
 
 [context.deploy-preview.environment]
   HUGO_VERSION = "0.163.3"
+
+# Retired placeholder: use a real permanent redirect rather than a meta refresh.
+[[redirects]]
+  from = "/blog/2026/05/13/first-note/"
+  to = "/blog/2026/11/11/building-a-homelab-i-can-trust/"
+  status = 301
+  force = true

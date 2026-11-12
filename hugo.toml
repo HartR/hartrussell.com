@@ -1,4 +1,5 @@
-baseURL = "https://hartrussell.com/"
+baseURL = "https://www.hartrussell.com/"
+enableRobotsTXT = true
 disableKinds = ["taxonomy", "term"]
 [languages.en]
   locale = "en-us"
@@ -10,8 +11,8 @@ theme = []
   brand_name = "Hart Russell"
   brand_tagline = "M.S. Computer Science | Chill Dude"
   subtitle = "My only social media"
-  description = "A small personal site for occasional notes, photos, and resume links."
-  author = "Hart"
+  description = "Hart Russell's personal site: homelab projects, self-hosted services, photos, and a CV."
+  author = "Hart Russell"
   github = "HartR"
 
 [permalinks]

@@ -1,4 +1,8 @@
 {{ define "main" }}
+<header class="page-header">
+  <h1>{{ .Title }}</h1>
+  <p>{{ .Description }}</p>
+</header>
 {{ $photos := resources.Match "photos/*" }}
 {{ $image_count := 0 }}
 
@@ -15,7 +19,7 @@
     {{ $thumb_img := .Resize "800x webp" }}
 
     <div class="photo-card" tabindex="0" data-src="{{ $lightbox_img.RelPermalink }}" role="button" aria-label="View photo {{ $image_count }}">
-      <img src="{{ $thumb_img.RelPermalink }}" alt="Photo {{ $image_count }}" loading="lazy">
+      <img src="{{ $thumb_img.RelPermalink }}" alt="Photo {{ $image_count }}" width="{{ $thumb_img.Width }}" height="{{ $thumb_img.Height }}" loading="lazy">
     </div>
   {{ end }}
 {{ end }}
