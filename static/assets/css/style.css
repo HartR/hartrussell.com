@@ -348,6 +348,28 @@ main {
   margin-bottom: 1.5rem;
   line-height: 1.7;
 }
+.prose h2 {
+  color: var(--accent-cyan);
+  margin-top: 2.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(0, 242, 254, 0.18);
+  scroll-margin-top: calc(var(--header-height) + 1.5rem);
+}
+.prose h3 {
+  color: #c4b5fd;
+  margin-top: 1.75rem;
+  scroll-margin-top: calc(var(--header-height) + 1.5rem);
+}
+.prose h3 a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(196, 181, 253, 0.35);
+  text-underline-offset: 0.2em;
+}
+.prose h3 a:hover {
+  color: var(--accent-cyan);
+  text-decoration-color: currentColor;
+}
 .prose img {
   max-width: 100%;
   height: auto;
