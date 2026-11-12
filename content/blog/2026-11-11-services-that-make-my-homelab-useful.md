@@ -21,7 +21,7 @@ The benefit is being able to enjoy the collection, rather than just store it. I'
   <a href="/assets/images/immich-demo.webp" aria-label="Open the immich example full size">
     <img src="/assets/images/immich-demo.webp" alt="Immich web and mobile interfaces showing a photo library, map, albums, and image details." width="1800" height="1117" loading="lazy" decoding="async">
   </a>
-  <figcaption>Immich project promotional screenshots. Example only, not my private instance. <a href="https://github.com/immich-app/immich">Source</a> · <a href="/assets/images/immich-demo.webp">Full size</a></figcaption>
+  <figcaption>Example screenshot, not my private instance. <a href="https://github.com/immich-app/immich">Source</a> · <a href="/assets/images/immich-demo.webp">Full size</a></figcaption>
 </figure>
 
 ### [Paperless-ngx](https://github.com/paperless-ngx/paperless-ngx)
@@ -76,7 +76,7 @@ Actual Budget is the budgeting application in the lab. It provides a place to or
   <a href="/assets/images/actual-budget-demo.webp" aria-label="Open the actual budget example full size">
     <img src="/assets/images/actual-budget-demo.webp" alt="Actual Budget in dark mode displaying sample accounts and monthly spending categories." width="1800" height="1013" loading="lazy" decoding="async">
   </a>
-  <figcaption>Actual Budget project screenshot with sample finances. Example only, not my private instance. <a href="https://actualbudget.org/">Source</a> · <a href="/assets/images/actual-budget-demo.webp">Full size</a></figcaption>
+  <figcaption>Example screenshot, not my private instance. <a href="https://actualbudget.org/">Source</a> · <a href="/assets/images/actual-budget-demo.webp">Full size</a></figcaption>
 </figure>
 
 ### [Trilium](https://triliumnotes.org/)
@@ -95,7 +95,7 @@ It runs on its own dedicated hardware. I like giving home automation a home of i
   <a href="/assets/images/home-assistant-demo.webp" aria-label="Open the home assistant example full size">
     <img src="/assets/images/home-assistant-demo.webp" alt="Home Assistant example dashboard with room sections, device controls, and status cards." width="1800" height="1257" loading="lazy" decoding="async">
   </a>
-  <figcaption>Home Assistant project example dashboard. Example only, not my private instance. <a href="https://www.home-assistant.io/blog/2024/03/04/dashboard-chapter-1/">Source</a> · <a href="/assets/images/home-assistant-demo.webp">Full size</a></figcaption>
+  <figcaption>Example screenshot, not my private instance. <a href="https://www.home-assistant.io/blog/2024/03/04/dashboard-chapter-1/">Source</a> · <a href="/assets/images/home-assistant-demo.webp">Full size</a></figcaption>
 </figure>
 
 ### [Hermes Agent](https://hermes-agent.nousresearch.com/)
