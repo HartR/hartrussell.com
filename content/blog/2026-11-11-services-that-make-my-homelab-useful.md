@@ -114,6 +114,17 @@ The agent software runs on my hardware; that doesn't mean every language model i
 
 The [Synology NAS](https://www.synology.com/) supplies shared storage, including SMB file access and NFS mounts for services that need them. [Restic](https://restic.net/) backs up selected host and application data, and health checks watch for failures and send alerts. Those pieces reduce the amount I have to check manually, although a running backup service is not proof that everything is covered or recoverable.
 
+## The services map
+
+Here's a redacted overview of where these services run. Background workers, databases, and caches are grouped with the applications they support.
+
+<figure>
+  <a href="/assets/images/services-public.webp" aria-label="Open the redacted services map at full size">
+    <img src="/assets/images/services-public.webp" alt="Redacted services map grouping applications on an application server, a NAS and storage host, and a separate Home Assistant device." width="2980" height="6036" loading="lazy" decoding="async">
+  </a>
+  <figcaption>Public version of my services map. Addresses, hostnames, ports, versions, and internal connection and access details are omitted. <a href="/assets/images/services-public.webp">Open full size</a>.</figcaption>
+</figure>
+
 I enjoy the technical work, but I want the result to earn its place in my life. A useful lab lets me find a photo, pick up a book, or capture a task with less friction. I'm happy to keep experimenting as long as the services give me something worth maintaining.
 
 To see how I secured these services, [read my first homelab article, "Building a homelab I can trust."](/blog/2026/11/11/building-a-homelab-i-can-trust/)
