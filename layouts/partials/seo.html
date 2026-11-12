@@ -33,7 +33,14 @@
 {{ else }}
 <meta property="og:type" content="website">
 {{ if .IsHome }}
-{{ $schema := dict "@context" "https://schema.org" "@type" "WebSite" "name" .Site.Params.brand_name "url" .Permalink "description" $description "author" $author }}
+{{ $p := .Site.Params.person }}
+{{ $addr := dict "@type" "PostalAddress" "addressLocality" $p.locality "addressRegion" $p.region "addressCountry" $p.country }}
+{{ $org := dict "@type" "Organization" "name" $p.employer }}
+{{ $alumni := slice }}
+{{ range $p.alumni }}{{ $alumni = $alumni | append (dict "@type" "CollegeOrUniversity" "name" .) }}{{ end }}
+{{ $personSchema := dict "@type" "Person" "name" .Site.Params.author "url" .Site.Home.Permalink "jobTitle" $p.job_title "worksFor" $org "address" $addr "email" (printf "mailto:%s" $p.email) "alumniOf" $alumni "knowsAbout" $p.knows_about "sameAs" (slice $p.linkedin $p.github_url) }}
+{{ $siteSchema := dict "@type" "WebSite" "name" .Site.Params.brand_name "url" .Permalink "description" $description "author" $author }}
+{{ $schema := dict "@context" "https://schema.org" "@graph" (slice $siteSchema $personSchema) }}
 <script type="application/ld+json">{{ $schema | jsonify | safeJS }}</script>
 {{ end }}
 {{ end }}

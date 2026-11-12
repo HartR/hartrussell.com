@@ -4,16 +4,28 @@ disableKinds = ["taxonomy", "term"]
 [languages.en]
   locale = "en-us"
 
-title = "Hart Russell | M.S. Computer Science | Chill Dude"
+title = "Hart Russell | Senior Software Engineer, San Diego"
 theme = []
 
 [params]
   brand_name = "Hart Russell"
   brand_tagline = "M.S. Computer Science | Chill Dude"
   subtitle = "My only social media"
-  description = "Hart Russell's personal site: homelab projects, self-hosted services, photos, and a CV."
+  description = "Hart Russell is a senior software engineer in San Diego building Java, C++, and Python systems for naval defense programs. Homelab and self-hosting notes."
   author = "Hart Russell"
   github = "HartR"
+
+  [params.person]
+    job_title = "Senior Software Engineer"
+    employer = "Trabus Technologies"
+    locality = "San Diego"
+    region = "CA"
+    country = "US"
+    email = "recruiters@hartrussell.com"
+    linkedin = "https://www.linkedin.com/in/hartcranerussell"
+    github_url = "https://github.com/HartR"
+    alumni = ["San Diego State University", "Grinnell College"]
+    knows_about = ["Java", "C++", "Python", "Spring Boot", "Distributed systems", "Naval defense software", "CI/CD", "Docker", "Agile and Scrum"]
 
 [permalinks]
   blog = "/blog/:year/:month/:day/:title/"
