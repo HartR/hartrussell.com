@@ -15,6 +15,12 @@
 [context.deploy-preview.environment]
   HUGO_VERSION = "0.163.3"
 
+# Netlify does not map .webmanifest to a manifest MIME type by default.
+[[headers]]
+  for = "/site.webmanifest"
+  [headers.values]
+    Content-Type = "application/manifest+json"
+
 # Retired placeholder: use a real permanent redirect rather than a meta refresh.
 [[redirects]]
   from = "/blog/2026/05/13/first-note/"
