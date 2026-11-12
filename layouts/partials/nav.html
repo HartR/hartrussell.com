@@ -26,16 +26,12 @@
     var dd = document.querySelector('.nav-dropdown');
     if (!dd) return;
     var summary = dd.querySelector('summary');
-    // Own the toggle so hover-open (mouse) and tap/keyboard (click) never fight.
+    // Click-to-open only: hover was closing the panel as the pointer crossed the
+    // gap toward the link. Open state now persists until the toggle is clicked
+    // again, a link inside is followed, or the user clicks elsewhere.
     summary.addEventListener('click', function (e) {
       e.preventDefault();
       dd.open = !dd.open;
-    });
-    dd.addEventListener('pointerenter', function (e) {
-      if (e.pointerType === 'mouse' || e.pointerType === undefined) dd.open = true;
-    });
-    dd.addEventListener('pointerleave', function (e) {
-      if (e.pointerType === 'mouse' || e.pointerType === undefined) dd.open = false;
     });
     document.addEventListener('click', function (e) {
       if (!dd.contains(e.target)) dd.open = false;
